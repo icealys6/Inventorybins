@@ -11,9 +11,7 @@
 #define MAX_LOADSTRING 100
 // Global var bin
 bin *binptr;
-wchar_t newline[] = { L'\r',L'\n' };
 wchar_t spaces[] = L"          "; // 10 spaces
-wchar_t *showresultbuf[10];
 // Global Variables:
 HWND hWnd;
 HINSTANCE hInst;                                // current instance
@@ -81,7 +79,7 @@ void drawchildren()
 	binselect = CreateWindowW(L"EDIT", NULL, WS_CHILD | WS_OVERLAPPED | ES_READONLY | WS_VISIBLE | ES_CENTER, (rect.right - rect.left) / 2 - width / 2, rect.top + offset, width, height, hWnd, NULL, NULL, NULL);
 	wchar_t binsel[] = { 'B','i','n',' ','S','e','l','e','c','t','i','o','n',' ','1','-','1','0','\0' };
 	Edit_NoSetFocus(binselect);
-	Edit_SetText(binselect, binsel, 19);
+	Edit_SetText(binselect, binsel);
 	offset += 20;
 	binselectinput = CreateWindowW(L"EDIT", NULL, WS_CHILD | WS_OVERLAPPED | WS_VISIBLE | WS_BORDER | ES_CENTER, (rect.right - rect.left) / 2 - width / 2, rect.top + offset, width, height, hWnd, NULL, NULL, NULL);
 	offset += 20;
@@ -92,14 +90,14 @@ void drawchildren()
 	offset += 20;
 	wchar_t add[] = { 'A','d','d',' ','P','a','r','t','s','\0' };
 	Edit_NoSetFocus(Addparts);
-	Edit_SetText(Addparts, add, 10);
+	Edit_SetText(Addparts, add);
 	Addpartsin = CreateWindowW(L"EDIT", NULL, WS_CHILD | WS_OVERLAPPED | WS_VISIBLE | WS_BORDER | ES_CENTER, (rect.right - rect.left) / 2 - width / 2, rect.top + offset, width, height, hWnd, NULL, NULL, NULL);
 	offset += 20;
 	Removeparts = CreateWindowW(L"EDIT", NULL, WS_CHILD | WS_OVERLAPPED | ES_READONLY | WS_VISIBLE | ES_CENTER, (rect.right - rect.left) / 2 - width / 2, rect.top + offset, width, height, hWnd, NULL, NULL, NULL);
 	offset += 20;
 	wchar_t remove[] = { 'R','e','m','o','v','e',' ','P','a','r','t','s','\0' };
 	Edit_NoSetFocus(Removeparts);
-	Edit_SetText(Removeparts, remove, 13);
+	Edit_SetText(Removeparts, remove);
 	Removepartsin = CreateWindowW(L"EDIT", NULL, WS_CHILD | WS_OVERLAPPED | WS_VISIBLE | WS_BORDER | ES_CENTER, (rect.right - rect.left) / 2 - width / 2, rect.top + offset, width, height, hWnd, NULL, NULL, NULL);
 	offset += 20;
 	binout = CreateWindowW(L"EDIT", NULL, WS_CHILD | WS_OVERLAPPED | ES_READONLY | WS_VISIBLE | ES_LEFT | WS_BORDER | ES_MULTILINE |ES_WANTRETURN, rect.left, rect.top + offset, rect.right - rect.left, rect.bottom - offset, hWnd, NULL, NULL, NULL);
